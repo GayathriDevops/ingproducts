@@ -6,12 +6,17 @@ import com.ing.products.entity.Product;
 
 public class CategoryProductResponse {
 	
-	private List<Product> Products;
+	private String statusCode;
+	private String message;
+	
+	
+	private List<Product> products;
+	
 	public List<Product> getProducts() {
-		return Products;
+		return products;
 	}
 	public void setProducts(List<Product> products) {
-		Products = products;
+		this.products = products;
 	}
 	public String getStatusCode() {
 		return statusCode;
@@ -25,9 +30,7 @@ public class CategoryProductResponse {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	private String statusCode;
-	private String message;
-	
+
 
 
 }

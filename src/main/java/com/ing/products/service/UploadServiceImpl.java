@@ -1,12 +1,6 @@
 package com.ing.products.service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -33,11 +27,7 @@ public class UploadServiceImpl implements UploadService {
 	@Override
 	public String upload(MultipartFile file) {
 
-		//String filePath = "C:\\Users\\User1\\Desktop\\product_info.xlsx";
-
 		try {
-
-			//FileInputStream excelFile = new FileInputStream(new File(filePath));
 			Workbook workbook = new XSSFWorkbook(file.getInputStream());
 			Sheet datatypeSheet = workbook.getSheetAt(0);
 			Iterator<Row> iterator = datatypeSheet.iterator();

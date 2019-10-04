@@ -1,8 +1,6 @@
 package com.ing.products.dto;
 
 import java.io.Serializable;
-import java.util.List;
-
 import com.ing.products.entity.Product;
 
 

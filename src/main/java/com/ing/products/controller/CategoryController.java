@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ing.products.constants.ProductConstants;
 import com.ing.products.dto.CategoryProductResponse;
 import com.ing.products.dto.CategoryResponse;
 import com.ing.products.entity.Category;
 import com.ing.products.entity.Product;
+import com.ing.products.exception.CategoryDoesntExistException;
 import com.ing.products.exception.ProductDoesntExistException;
 import com.ing.products.service.CategoryService;
 import com.ing.products.service.ProductService;
@@ -22,7 +22,7 @@ import com.ing.products.service.ProductService;
 @CrossOrigin(allowedHeaders = {"*","*/"}, origins= {"*","*/"})
 public class CategoryController {
 
-	ProductConstants constants;
+	static ProductConstants constants;
 
 	@Autowired
 	ProductService productService;
@@ -34,6 +34,11 @@ public class CategoryController {
 	public CategoryResponse getCategories() {
 
 		Optional<List<Category>> resCategory = categoryservice.getCategories();
+		
+		  if(!resCategory.isPresent()) throw new
+		  CategoryDoesntExistException("categories doesnt exist");
+		  
+		
 		CategoryResponse categoryResponse = new CategoryResponse();
 		categoryResponse.setCategory(resCategory.get());
 		categoryResponse.setStatusCode(constants.SUCCESS_STATUS_CODE);
@@ -44,13 +49,13 @@ public class CategoryController {
 	}
 
 	
-	  @PostMapping(value="/categories/{categoryId}/products") 
+	  @GetMapping(value="/categories/{categoryId}") 
 	  public CategoryProductResponse selectCategory(@PathVariable int categoryId){ 
 	 Optional<List<Product>> productlist = productService.showproducts(categoryId); 
-	 List<Product> prods = productlist.get();
-	  
+	 
 	  if(!productlist.isPresent()) throw new
 	  ProductDoesntExistException("products doesnt exist");
+	  List<Product> prods = productlist.get();
 	  
 	  CategoryProductResponse categoryProductResponse = new CategoryProductResponse();
 	  categoryProductResponse.setProducts(prods);
