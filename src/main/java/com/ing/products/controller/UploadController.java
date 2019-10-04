@@ -21,7 +21,7 @@ public class UploadController {
 
 	@PostMapping("/categories/products")
 	public ResponseVO upload(@RequestParam("file") MultipartFile file) {
-	
+		
 		uploadService.upload(file);
 		ResponseVO vo = new ResponseVO();
 		vo.setStatusCode(ProductConstants.SUCCESS_STATUS_CODE);
