@@ -1,6 +1,7 @@
 package com.ing.products.service;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -27,7 +28,16 @@ public class UploadServiceImpl implements UploadService {
 
 	@Override
 	public String upload(MultipartFile file) {
+		
+		List<Category> catList = categoryRepository.findAll();
+        List<Product> prodList = productRepository.findAll();
 
+        if ((!catList.isEmpty()) && (!prodList.isEmpty())) {
+               productRepository.deleteAll();
+               categoryRepository.deleteAll();
+
+        }
+        
 		try {
 			Workbook workbook = new XSSFWorkbook(file.getInputStream());
 			Sheet datatypeSheet = workbook.getSheetAt(0);

@@ -16,7 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<sonar.coverage.exclusions>**/entity/* ,**/dto/*,**/api/*,**/util/*,**/exception/*,**/config/*,**/constants/*,**/UploadServiceImpl.java/*,**/UploadService.java/*,**/UploadController.java/*</sonar.coverage.exclusions>
+		<sonar.coverage.exclusions>**/entity/* ,**/dto/*,**/api/*,**/util/*,**/exception/*,**/service/UploadService.java,**/service/UploadServiceImpl.java,**/controller/UploadController.java,**/service/CategoryService.java,**/service/ProductService.java,**/service/UploadService.java,**/constants</sonar.coverage.exclusions>
 	</properties>
 
 
