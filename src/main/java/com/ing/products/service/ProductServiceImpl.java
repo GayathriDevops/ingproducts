@@ -13,9 +13,7 @@ import com.ing.products.repository.ProductRepository;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-	
-	static ProductConstants constants;
-		
+			
 	@Autowired
 	ProductRepository productrepository;
 	
@@ -31,8 +29,8 @@ public class ProductServiceImpl implements ProductService {
 		
         ProductDetailDto productDetailDto = new ProductDetailDto();
    
-        productDetailDto.setStatusCode(constants.SUCCESS_STATUS_CODE);
-        productDetailDto.setMessage(constants.SUCCESS_MESSAGE);
+        productDetailDto.setStatusCode(ProductConstants.SUCCESS_STATUS_CODE);
+        productDetailDto.setMessage(ProductConstants.SUCCESS_MESSAGE);
         productDetailDto.setProduct(product);
         return productDetailDto ;
         

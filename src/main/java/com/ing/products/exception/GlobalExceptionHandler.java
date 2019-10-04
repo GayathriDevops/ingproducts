@@ -24,4 +24,10 @@ return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 }
 
 
+
+@ExceptionHandler(FailUploadException.class)
+public ResponseEntity<ResponseError> failUploadException(FailUploadException ex) {
+ResponseError error = new ResponseError(ex.getMessage(), HttpStatus.NOT_FOUND.value());
+return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+}
 }

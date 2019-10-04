@@ -2,15 +2,15 @@ package com.ing.products.dto;
 
 public class ResponseVO {
 	
-	private int statusCode;
+	private String statusCode;
 	
 	private String message;
 
-	public int getStatusCode() {
+	public String getStatusCode() {
 		return statusCode;
 	}
 
-	public void setStatusCode(int statusCode) {
+	public void setStatusCode(String statusCode) {
 		this.statusCode = statusCode;
 	}
 

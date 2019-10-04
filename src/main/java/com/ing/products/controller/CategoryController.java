@@ -22,8 +22,6 @@ import com.ing.products.service.ProductService;
 @CrossOrigin(allowedHeaders = {"*","*/"}, origins= {"*","*/"})
 public class CategoryController {
 
-	static ProductConstants constants;
-
 	@Autowired
 	ProductService productService;
 
@@ -41,8 +39,8 @@ public class CategoryController {
 		
 		CategoryResponse categoryResponse = new CategoryResponse();
 		categoryResponse.setCategory(resCategory.get());
-		categoryResponse.setStatusCode(constants.SUCCESS_STATUS_CODE);
-		categoryResponse.setMessage("success");
+		categoryResponse.setStatusCode(ProductConstants.SUCCESS_STATUS_CODE);
+		categoryResponse.setMessage(ProductConstants.SUCCESS_MESSAGE);
 
 		return categoryResponse;
 
@@ -59,7 +57,7 @@ public class CategoryController {
 	  
 	  CategoryProductResponse categoryProductResponse = new CategoryProductResponse();
 	  categoryProductResponse.setProducts(prods);
-	  categoryProductResponse.setStatusCode(constants.SUCCESS_STATUS_CODE);
+	  categoryProductResponse.setStatusCode(ProductConstants.SUCCESS_STATUS_CODE);
 	  categoryProductResponse.setMessage("success");
 	  return categoryProductResponse; }
 	 

@@ -13,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-
 import com.ing.products.constants.ProductConstants;
 import com.ing.products.dto.ProductDetailDto;
 import com.ing.products.entity.Category;

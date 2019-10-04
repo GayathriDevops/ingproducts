@@ -1,6 +1,5 @@
 package com.ing.products.controller;
 
-import org.apache.commons.httpclient.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ing.products.constants.ProductConstants;
 import com.ing.products.dto.ResponseVO;
 import com.ing.products.service.UploadService;
 
@@ -19,13 +19,13 @@ public class UploadController {
 	UploadService uploadService;
 	
 
-	@PostMapping("/categories")
+	@PostMapping("/categories/products")
 	public ResponseVO upload(@RequestParam("file") MultipartFile file) {
 	
-		String response = uploadService.upload(file);
+		uploadService.upload(file);
 		ResponseVO vo = new ResponseVO();
-		vo.setStatusCode(HttpStatus.SC_OK);
-		vo.setMessage(response);
+		vo.setStatusCode(ProductConstants.SUCCESS_STATUS_CODE);
+		vo.setMessage(ProductConstants.SUCCESS_MESSAGE);
 		return vo;
 	}
 

@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ing.products.entity.Category;
 import com.ing.products.entity.Product;
+import com.ing.products.exception.FailUploadException;
 import com.ing.products.repository.CategoryRepository;
 import com.ing.products.repository.ProductRepository;
 
@@ -56,8 +57,9 @@ public class UploadServiceImpl implements UploadService {
 			}
 
 		} catch (Exception e) {
-			return "Exception raised in file uploading";
+			throw new FailUploadException(e + "Failed to upload");
 		}
+		
 		return "Successfully uploading file product-info.xlsx";
 	}
 
